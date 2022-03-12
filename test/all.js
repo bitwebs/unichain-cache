@@ -1,9 +1,9 @@
 const test = require('tape')
 
-const HypercoreCache = require('..')
+const UnichainCache = require('..')
 
 test('set/get without namespaces, no swapping or eviction', t => {
-  const cache = new HypercoreCache({ maxByteSize: 1024 * 10 })
+  const cache = new UnichainCache({ maxByteSize: 1024 * 10 })
   const aVal = Buffer.from('a')
   const bVal = Buffer.from('b')
   debugSet(cache, 'a', aVal)
@@ -15,7 +15,7 @@ test('set/get without namespaces, no swapping or eviction', t => {
 })
 
 test('set/get without namespaces, stale swap ', t => {
-  const cache = new HypercoreCache({ maxByteSize: 1024 })
+  const cache = new UnichainCache({ maxByteSize: 1024 })
   const aVal = Buffer.from('a')
   const bVal = Buffer.from('b')
   debugSet(cache, 'a', aVal)
@@ -28,7 +28,7 @@ test('set/get without namespaces, stale swap ', t => {
 })
 
 test('set/get without namespaces, eviction', t => {
-  const cache = new HypercoreCache({ maxByteSize: 1024 })
+  const cache = new UnichainCache({ maxByteSize: 1024 })
   const aVal = Buffer.from('a')
   const bVal = Buffer.from('b')
   const cVal = Buffer.from('c')
@@ -48,7 +48,7 @@ test('set/get without namespaces, eviction', t => {
 })
 
 test('set/get without namespaces, full cache', t => {
-  const cache = new HypercoreCache({ maxByteSize: 1024 * 2 })
+  const cache = new UnichainCache({ maxByteSize: 1024 * 2 })
   const aVal = Buffer.from('a')
   const bVal = Buffer.from('b')
   const cVal = Buffer.from('c')
@@ -72,7 +72,7 @@ test('set/get without namespaces, lots of sets', t => {
   // Must be a power of two for this test.
   const CACHE_SIZE = 64
 
-  const cache = new HypercoreCache({ maxByteSize: 1024 * CACHE_SIZE })
+  const cache = new UnichainCache({ maxByteSize: 1024 * CACHE_SIZE })
   const bufs = []
 
   for (let i = 0; i < NUM_SETS; i++) {
@@ -100,7 +100,7 @@ test('set/get without namespaces, lots of sets', t => {
 })
 
 test('removal without namespaces, entry in fresh', t => {
-  const cache = new HypercoreCache({ maxByteSize: 1024 * 2 })
+  const cache = new UnichainCache({ maxByteSize: 1024 * 2 })
   const aVal = Buffer.from('a')
   const bVal = Buffer.from('b')
   const cVal = Buffer.from('c')
@@ -128,7 +128,7 @@ test('removal without namespaces, entry in fresh', t => {
 })
 
 test('removal without namespaces, entry in stale', t => {
-  const cache = new HypercoreCache({ maxByteSize: 1024 * 2 })
+  const cache = new UnichainCache({ maxByteSize: 1024 * 2 })
   const aVal = Buffer.from('a')
   const bVal = Buffer.from('b')
   const cVal = Buffer.from('c')
@@ -156,7 +156,7 @@ test('removal without namespaces, entry in stale', t => {
 })
 
 test('removal without namespaces, entry in both stale and fresh', t => {
-  const cache = new HypercoreCache({ maxByteSize: 1024 * 2 })
+  const cache = new UnichainCache({ maxByteSize: 1024 * 2 })
   const aVal = Buffer.from('a')
   const bVal = Buffer.from('b')
   const cVal = Buffer.from('c')
@@ -183,7 +183,7 @@ test('removal without namespaces, entry in both stale and fresh', t => {
 })
 
 test('custom size estimator', t => {
-  const cache = new HypercoreCache({ maxByteSize: 1, estimateSize: val => val.length })
+  const cache = new UnichainCache({ maxByteSize: 1, estimateSize: val => val.length })
   const aVal = Buffer.from('a')
   const bVal = Buffer.from('b')
   const cVal = Buffer.from('c')
@@ -206,7 +206,7 @@ test('onevict is triggered', t => {
   t.plan(8)
   let called = 0
 
-  const cache = new HypercoreCache({
+  const cache = new UnichainCache({
     maxByteSize: 1,
     estimateSize: val => val.length,
     onEvict: evicted => {
@@ -235,7 +235,7 @@ test('onevict is triggered', t => {
 })
 
 test('set/get with namespaces', t => {
-  const cache = new HypercoreCache({ maxByteSize: 1024 * 2 })
+  const cache = new UnichainCache({ maxByteSize: 1024 * 2 })
   const ns1 = cache.namespace('1')
   const ns2 = cache.namespace('2')
 

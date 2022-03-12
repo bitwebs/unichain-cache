@@ -1,6 +1,6 @@
 const hashlru = require('hashlru')
 const alru = require('array-lru')
-const HypercoreCache = require('..')
+const UnichainCache = require('..')
 
 const NUM_VALUES = 1024 * 1024
 
@@ -18,7 +18,7 @@ function bench (name, cache) {
   console.timeEnd(name)
 }
 
-const coreCache = new HypercoreCache({
+const chainCache = new UnichainCache({
   maxByteSize: NUM_VALUES * 8,
   estimateSize: val => 8
 })
@@ -33,6 +33,6 @@ bench('alru', alruCache)
 bench('alru', alruCache)
 bench('alru', alruCache)
 
-bench('hypercore-cache', coreCache)
-bench('hypercore-cache', coreCache)
-bench('hypercore-cache', coreCache)
+bench('unichain-cache', chainCache)
+bench('unichain-cache', chainCache)
+bench('unichain-cache', chainCache)

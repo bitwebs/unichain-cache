@@ -23,7 +23,7 @@ class NamespacedCache {
   }
 }
 
-module.exports = class HypercoreCache {
+module.exports = class UnichainCache {
   constructor (opts = {}) {
     this.maxByteSize = opts.maxByteSize || DEFAULT_MAX_BYTE_SIZE
     this.onEvict = opts.onEvict

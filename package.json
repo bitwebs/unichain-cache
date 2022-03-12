@@ -1,25 +1,25 @@
 {
-  "name": "hypercore-cache",
-  "version": "1.0.2",
-  "description": "A caching module for Hypercore tree nodes and blocks ",
+  "name": "@web4/unichain-cache",
+  "version": "1.0.0",
+  "description": "A caching module for Unichain tree nodes and blocks ",
   "main": "index.js",
   "scripts": {
     "test": "standard && tape test/*.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewosh/hypercore-cache.git"
+    "url": "git+https://github.com/bitwebs/unichain-cache.git"
   },
   "keywords": [
-    "hypercore",
+    "unichain",
     "cache"
   ],
   "author": "Andrew Osheroff <andrewosh@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/andrewosh/hypercore-cache/issues"
+    "url": "https://github.com/bitwebs/unichain-cache/issues"
   },
-  "homepage": "https://github.com/andrewosh/hypercore-cache#readme",
+  "homepage": "https://github.com/bitwebs/unichain-cache#readme",
   "devDependencies": {
     "standard": "^14.3.1",
     "tape": "^4.13.0"
